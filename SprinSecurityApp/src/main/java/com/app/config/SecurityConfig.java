@@ -28,7 +28,7 @@ import java.util.List;
 @EnableWebSecurity //habilita la seguridad web
 @EnableMethodSecurity //utiliza anotaciones propias de springsecurity
 public class SecurityConfig {
-    @Bean
+    /*@Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity
                 .csrf(csrf -> csrf.disable())//vulnerabilidad web aparece en formularios, con aplicaciones rest no requiere, pero si usamos mvc si se necesita. un atacante toma sesion de un usuario logueado. basada en tokens que se guardan en las cookies
@@ -44,6 +44,15 @@ public class SecurityConfig {
                     //configurar el resto de enpoints - NO ESPECIFICADOS
                     http.anyRequest().denyAll();//rechazatodo lo que no se especifique, el autehtiqued es mas permisivo
                 })
+                .build();
+    }*/
+
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
+        return httpSecurity
+                .csrf(csrf -> csrf.disable())//vulnerabilidad web aparece en formularios, con aplicaciones rest no requiere, pero si usamos mvc si se necesita. un atacante toma sesion de un usuario logueado. basada en tokens que se guardan en las cookies
+                .httpBasic(Customizer.withDefaults())
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))//para aplicaciones web vamos a trabajar sin estado, y es que cuando alguien se loguea y va guardando la sesion en la memoria, en este caso no se guarda la sesion en memoria y va depender de la expiracion de token.
                 .build();
     }
 
