@@ -22,5 +22,7 @@ public class RoleEntity {
     @Enumerated(EnumType.STRING)
     private RoleEnum roleEnum;
 
-   
+    @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)//se guarda un rol en la base de datos tambien agrega los permisos asociados
+    @JoinTable(name = "role_permissions", joinColumns = @JoinColumn(name = "role_id"),inverseJoinColumns = @JoinColumn(name="permission_id"))
+    private Set<PermissionEntity> permissionList = new HashSet<>();
 }

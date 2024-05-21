@@ -35,6 +35,8 @@ public class UserEntity {
     @Column(name = "credential_No_Expired")
     private boolean credentialNoExpired;
 
-    
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL) //cuando llamo un usuario me carga todos los roles que tiene, guarda un usuario en la tabla va guardar todos los roles asociados
+    @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"),inverseJoinColumns = @JoinColumn(name="role_id"))
+    private Set<RoleEntity> roles= new HashSet<>();//no permite datos repetidos
 
 }
