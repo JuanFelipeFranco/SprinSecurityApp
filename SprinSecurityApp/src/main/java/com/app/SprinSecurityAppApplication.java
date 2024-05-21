@@ -97,7 +97,7 @@ public class SprinSecurityAppApplication {
 					.roles(Set.of(roleInvited))
 					.build();
 
-			UserEntity userjuan = UserEntity.builder()
+			UserEntity userJuan= UserEntity.builder()
 					.username("juan")
 					.password("1234")
 					.isEnabled(true)
@@ -107,7 +107,7 @@ public class SprinSecurityAppApplication {
 					.roles(Set.of(roleDeveloper))
 					.build();
 
-			userRepository.saveAll(List.of(userSantiago,userDaniel,userAndrea, userjuan));
+			userRepository.saveAll(List.of(userSantiago,userDaniel,userAndrea, userJuan));
 		}; //el cascade.all nos ayuda a que cuando se ejecuta el user a su vez trae los roles y por ultimo los permisos
 	}
 
