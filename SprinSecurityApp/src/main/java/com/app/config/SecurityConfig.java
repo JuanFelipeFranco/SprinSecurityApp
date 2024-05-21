@@ -65,11 +65,11 @@ public class SecurityConfig {
     public AuthenticationProvider authenticationProvider(){
         DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
         provider.setPasswordEncoder(passwordEncoder());
-        provider.setUserDetailsService(userDetailsService());
+        provider.setUserDetailsService(null);
         return provider;
     }
 
-    @Bean
+    /*@Bean   //USUARIOS CREADOS EN MEMORIA
     public UserDetailsService userDetailsService(){
         List <UserDetails> userDetailsList = new ArrayList<>();
 
@@ -86,7 +86,7 @@ public class SecurityConfig {
                 .build());
 
         return new InMemoryUserDetailsManager(userDetailsList);
-    }
+    }*/
 
 
     @Bean
