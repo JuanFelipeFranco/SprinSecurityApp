@@ -5,17 +5,17 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/auth")
-@PreAuthorize("denyAll()") //por defecto niega el acceso a todos
+//@PreAuthorize("denyAll()") //por defecto niega el acceso a todos
 public class TestAuthController {
 
     @GetMapping("/get")
-    @PreAuthorize("hasAuthority('READ')")
+    //@PreAuthorize("hasAuthority('READ')")
     public String helloGet(){
         return "Hello World - GET";
     }
 
     @PostMapping("/post")
-    @PreAuthorize("hasAuthority('CREATE') or hasAuthority('READ')")
+    //@PreAuthorize("hasAuthority('CREATE') or hasAuthority('READ')")
     public String helloPost(){
         return "Hello World - POST";
     }
@@ -31,7 +31,7 @@ public class TestAuthController {
     }
 
     @PatchMapping("/patch")
-    @PreAuthorize("hasAuthority('REFACTOR')")
+    //@PreAuthorize("hasAuthority('REFACTOR')")
     public String helloPatch(){
         return "Hello World - PATCH";
     }

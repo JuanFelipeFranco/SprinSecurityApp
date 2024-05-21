@@ -29,7 +29,7 @@ import java.util.List;
 @EnableWebSecurity //habilita la seguridad web
 @EnableMethodSecurity //utiliza anotaciones propias de springsecurity
 public class SecurityConfig {
-    /*@Bean
+    @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity
                 .csrf(csrf -> csrf.disable())//vulnerabilidad web aparece en formularios, con aplicaciones rest no requiere, pero si usamos mvc si se necesita. un atacante toma sesion de un usuario logueado. basada en tokens que se guardan en las cookies
@@ -37,25 +37,27 @@ public class SecurityConfig {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))//para aplicaciones web vamos a trabajar sin estado, y es que cuando alguien se loguea y va guardando la sesion en la memoria, en este caso no se guarda la sesion en memoria y va depender de la expiracion de token.
                 .authorizeHttpRequests(http -> {
                     //configurar los endpoints publicos
-                    http.requestMatchers(HttpMethod.GET, "/auth/hello").permitAll(); //si le hace peticion a este endpoint no necesita autorizacion
+                    http.requestMatchers(HttpMethod.GET, "/auth/get").permitAll(); //si le hace peticion a este endpoint no necesita autorizacion
 
                     //configuraar los endpoints privados
-                    http.requestMatchers(HttpMethod.GET,"/auth/hello-secured").hasAuthority("READ"); //en este caso los que tenga esta autorizacion de lectura pueden acceder
+                    http.requestMatchers(HttpMethod.POST,"/auth/post").hasAnyRole("ADMIN","DEVELOPER"); //en este caso los que tengan el ROLE ADMIN Y DEVELOPER de lectura pueden acceder
+                    http.requestMatchers(HttpMethod.PATCH,"/auth/patch").hasAnyAuthority("REFACTOR"); //en este caso los que tenga esta autorizacion de REFACTOR pueden acceder
+
 
                     //configurar el resto de enpoints - NO ESPECIFICADOS
                     http.anyRequest().denyAll();//rechazatodo lo que no se especifique, el autehtiqued es mas permisivo
                 })
                 .build();
-    }*/
+    }
 
-    @Bean
+    /* @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity
                 .csrf(csrf -> csrf.disable())//vulnerabilidad web aparece en formularios, con aplicaciones rest no requiere, pero si usamos mvc si se necesita. un atacante toma sesion de un usuario logueado. basada en tokens que se guardan en las cookies
                 .httpBasic(Customizer.withDefaults())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))//para aplicaciones web vamos a trabajar sin estado, y es que cuando alguien se loguea y va guardando la sesion en la memoria, en este caso no se guarda la sesion en memoria y va depender de la expiracion de token.
                 .build();
-    }
+    }*/
 
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
