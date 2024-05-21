@@ -69,7 +69,7 @@ public class SprinSecurityAppApplication {
 			/* CREATE USERS */
 			UserEntity userSantiago = UserEntity.builder()
 					.username("santiago")
-					.password("1234")
+					.password("$2a$10$Bb1PRfsLzRmWpNDsO9BAzeBAXcY.Fzu2QnJvwCNFZIQo7VfhpLaUq")
 					.isEnabled(true)
 					.accountNoExpired(true)
 					.accountNoLocked(true)
@@ -79,7 +79,7 @@ public class SprinSecurityAppApplication {
 
 			UserEntity userDaniel = UserEntity.builder()
 					.username("daniel")
-					.password("1234")
+					.password("$2a$10$Bb1PRfsLzRmWpNDsO9BAzeBAXcY.Fzu2QnJvwCNFZIQo7VfhpLaUq")
 					.isEnabled(true)
 					.accountNoExpired(true)
 					.accountNoLocked(true)
@@ -89,7 +89,7 @@ public class SprinSecurityAppApplication {
 
 			UserEntity userAndrea = UserEntity.builder()
 					.username("andrea")
-					.password("1234")
+					.password("$2a$10$Bb1PRfsLzRmWpNDsO9BAzeBAXcY.Fzu2QnJvwCNFZIQo7VfhpLaUq")
 					.isEnabled(true)
 					.accountNoExpired(true)
 					.accountNoLocked(true)
@@ -99,7 +99,7 @@ public class SprinSecurityAppApplication {
 
 			UserEntity userJuan= UserEntity.builder()
 					.username("juan")
-					.password("1234")
+					.password("$2a$10$Bb1PRfsLzRmWpNDsO9BAzeBAXcY.Fzu2QnJvwCNFZIQo7VfhpLaUq")
 					.isEnabled(true)
 					.accountNoExpired(true)
 					.accountNoLocked(true)

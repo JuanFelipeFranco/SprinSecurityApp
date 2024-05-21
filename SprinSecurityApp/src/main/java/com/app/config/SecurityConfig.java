@@ -17,6 +17,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
@@ -94,7 +95,13 @@ public class SecurityConfig {
 
     @Bean
     public PasswordEncoder passwordEncoder(){
-        return NoOpPasswordEncoder.getInstance();//solo se usa para pruebas.
+        return new BCryptPasswordEncoder(); //encripta las contraseñas
+        /*return NoOpPasswordEncoder.getInstance();//solo se usa para pruebas.*/
     }
+
+    /* GENERADOR DE CONTRASEÑA ENCRIPTADA POR CONSOLA
+    public static void main(String[] args) {
+        System.out.println(new BCryptPasswordEncoder().encode("1234"));
+    }*/
 
 }
